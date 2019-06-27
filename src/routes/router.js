@@ -1,7 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
+// VIWS
 import Home from '../views/Home.vue';
-import NotFound from '../components/error_page/NotFound'
+import MessageBox from '../views/MessageBox.vue';
+import NotFound from '../components/error_page/NotFound.vue';
+
 
 Vue.use(Router);
 
@@ -31,6 +35,11 @@ const router = new Router({
       path: '/newProfile',
       name: 'newProfile',
       component: () => import('../views/forms/ProfileForm.vue'),
+    },
+    {
+      path: '/inbox',
+      name: 'messageBox',
+      component: MessageBox,
     },
   ],
 });

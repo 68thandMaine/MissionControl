@@ -93,15 +93,15 @@ export default {
       biography: '',
       picture: '',
       websites: [{
-        value: ''
+        value: '',
       }],
 
-      successMessage: false
+      successMessage: false,
     };
   },
   methods: {
-    handleSubmit(){
-      let file = document.querySelector('#picture')
+    handleSubmit() {
+      const file = document.querySelector('#picture');
       const newProfile = {
         displayName: this.displayName,
         firstName: this.firstName,
@@ -110,34 +110,34 @@ export default {
         greeting: this.greeting,
         biography: this.biography,
         // picture: file.files[0],
-        websites: this.websites
+        websites: this.websites,
       };
       // this.$store.dispatch('addProfile', newProfile).then((response) => {
         // console.log(response);
       // })
-      this.cleanUp()
+      this.cleanUp();
     },
-    cleanUp(){
+    cleanUp() {
       // this.showMessage()
-      this.clearInput()
+      this.clearInput();
     },
     clearInput() {
-     this.displayName = '',
-     this.firstName = '',
-     this.lastName = '',
-     this.email = '',
-     this.greeting = '',
-     this.biography = '',
-    //  this.picture = '',
-     this.websites = [{value: ''}]
+      this.displayName = '',
+      this.firstName = '',
+      this.lastName = '',
+      this.email = '',
+      this.greeting = '',
+      this.biography = '',
+      //  this.picture = '',
+      this.websites = [{ value: '' }];
     },
     // showMessage() {
-      // This function will be used to show a modal that comes and goes
-      // and reroutes to the home page
-      // this.successMessage = true;
-      // setTimeout(() => {
-        // this.goBackHome();
-      // }, 3000)
+    // This function will be used to show a modal that comes and goes
+    // and reroutes to the home page
+    // this.successMessage = true;
+    // setTimeout(() => {
+    // this.goBackHome();
+    // }, 3000)
     // },
     // goBackHome() {
     //   this.$router.push({
@@ -145,7 +145,7 @@ export default {
     //   });
     // },
   },
-}
+};
 </script>
 
 <style>

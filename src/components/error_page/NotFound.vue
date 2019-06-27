@@ -1,14 +1,14 @@
 <template>
   <div>
     <p>Sorry, the page you requested was not found.</p>
-    <router-link to='home'>Reture home.</router-link>
+    <router-link to='/'>Reture home.</router-link>
     </div>
 </template>
 
 <script>
 export default {
-name: 'NotFound'
-}
+  name: 'NotFound',
+};
 </script>
 
 <style>

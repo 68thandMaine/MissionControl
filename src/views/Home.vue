@@ -14,8 +14,8 @@ export default {
   components: {
     HelloWorld,
   },
-  created(){
-    console.log(process.env.VUE_APP_AUTH0_DOMAIN)
-  }
+  created() {
+    console.log(process.env.VUE_APP_AUTH0_DOMAIN);
+  },
 };
 </script>
