@@ -1,10 +1,8 @@
 <template>
 <div id='messageListWrapper'>
-  bye
   <div id='messageList'
       v-for="(message, index) in messages"
       :key='index'>
-    <h1>HALPPPPP</h1>
     <h1>{{message.subject}}</h1>
     <h2>{{message.createdAt}}</h2>
   </div>
@@ -17,16 +15,21 @@
 <script>
 export default {
   name: 'Inbox',
+    props: {
+      messages: {
+        type: Array,
+        required: true,
+      },
+    },
   data() {
     return {
-      isOpen: false,
+
     };
   },
-  props: {
-    messages: {
-      type: Array,
-      required: true,
-    },
+  computed: {
+    // formattedDate() {
+      // const
+    // },
   },
 mounted() {
   console.log('inbox messagearray', this.messages)
