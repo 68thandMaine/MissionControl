@@ -1,16 +1,53 @@
 <template>
   <div id="app">
-      <router-view/>
+    <div v-if='isOpen'>
+      <Sidebar />
+    </div>
+      <router-view @click='toggleSidebar'/>
   </div>
 </template>
 
+<script>
+import Sidebar from '../src/components/navigation/Sidebar';
+
+export default {
+  name: 'App',
+  components: {
+    Sidebar
+  },
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
+  methods: {
+    toggleSidebar() {
+      if(this.isOpen) this.isOpen = false;
+      else this.isOpen = true;
+    },
+  },
+  computed() {
+
+  }
+}
+</script>
+
+
 <style>
+* {
+  border: solid 1px black;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+}
+
+
+ul {
+  list-style: none;
+  margin: 0;
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -26,6 +63,7 @@
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   box-sizing: border-box;
+  background: #34424D
 }
 *, *:before, *:after {
   box-sizing: inherit;

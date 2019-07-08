@@ -15,12 +15,12 @@
 <script>
 export default {
   name: 'Inbox',
-    props: {
-      messages: {
-        type: Array,
-        required: true,
-      },
+  props: {
+    messages: {
+      type: Array,
+      required: true,
     },
+  },
   data() {
     return {
 
@@ -28,12 +28,12 @@ export default {
   },
   computed: {
     // formattedDate() {
-      // const
+    // const
     // },
   },
-mounted() {
-  console.log('inbox messagearray', this.messages)
-}
+  mounted() {
+    console.log('inbox messagearray', this.messages);
+  },
 };
 </script>
 

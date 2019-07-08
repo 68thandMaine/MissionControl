@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-// VIWS
-import Home from '../views/Home.vue';
+// VIEWS
+import Dashboard from '../views/Dashboard.vue';
 import MessageBox from '../views/MessageBox.vue';
 import NotFound from '../components/error_page/NotFound.vue';
 
@@ -15,8 +15,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'dashboard',
+      component: Dashboard
     },
     {
       path: '*',
@@ -45,15 +45,15 @@ const router = new Router({
 });
 
 // very basic "setup" of a global guard
-router.beforeEach((to, from, next) => {
-  if (to.name === 'callback') { // check if "to"-route is "callback" and allow access
-    next();
-  } else if (router.app.$auth.isAuthenticated()) { // if authenticated allow access
-    next();
-  } else { // trigger auth0 login
-    router.app.$auth.login();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.name === 'callback') { // check if "to"-route is "callback" and allow access
+//     next();
+//   } else if (router.app.$auth.isAuthenticated()) { // if authenticated allow access
+//     next();
+//   } else { // trigger auth0 login
+//     router.app.$auth.login();
+//   }
+// });
 
 
 export default router;
