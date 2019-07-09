@@ -15,12 +15,12 @@
 <script>
 export default {
   name: 'Inbox',
-    props: {
-      messages: {
-        type: Array,
-        required: true,
-      },
+  props: {
+    messages: {
+      type: Array,
+      required: true,
     },
+  },
   data() {
     return {
 
@@ -28,29 +28,28 @@ export default {
   },
   computed: {
     // formattedDate() {
-      // const
+    // const
     // },
   },
-mounted() {
-  console.log('inbox messagearray', this.messages)
-}
+  mounted() {
+    console.log('inbox messagearray', this.messages);
+  },
 };
 </script>
 
 <style>
 #messageListWrapper {
-border: dashed 3px black;
 float: left;
-position: fixed;
-width: 15%;
+position: relative;
+
+/* width: 100%; */
 }
 #messageList {
-  border: solid 2px red;
+
 }
 #messageWrapper {
   border: dashed 3px black;
   width: 85%;
-  position: fixed;
 }
 
 </style>

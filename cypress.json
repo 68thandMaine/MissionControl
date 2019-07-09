@@ -1,1 +1,4 @@
-{}
+{
+  "baseURL": "https://localhost:5001",
+  "integrationFolder": "test/integration"
+}

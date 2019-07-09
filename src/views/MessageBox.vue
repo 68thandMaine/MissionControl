@@ -21,14 +21,9 @@ export default {
 
   //   };
   // },
-  beforeRouteEnter(to, from, next) {
-    store.dispatch('loadMessages').then(()=>{
-      next();
-    });
-  },
   mounted() {
-    console.log(this.$store.state)
-    console.log(this.messages)
+    console.log(this.$store.state);
+    console.log(this.messages);
     // this.$store.dispatch('loadMessages')
   },
   computed: {

@@ -1,16 +1,83 @@
 <template>
   <div id="app">
-      <router-view/>
+    <div class='menu' v-if='isOpen'>
+      <Sidebar :activeMenu='sidebarMenu'/>
+    </div>
+    <Toolbar @click='toggleSidebar'/>
+    <SidebarButton class='sidebarButton' @click='closeSidebar' />
+    <div class='content'>
+      <main>
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
+
+<script>
+import Sidebar from './components/sidebar/Sidebar';
+import SidebarButton from '@/components/navigation/SidebarToggleButton';
+import Toolbar from '@/components/navigation/Toolbar';
+
+export default {
+  name: 'App',
+  components: {
+    Sidebar,
+    SidebarButton,
+    Toolbar,
+  },
+  data() {
+    return {
+      isOpen: false,
+      sidebarMenu: ''
+    };
+  },
+  methods: {
+    closeSidebar() {
+      this.isOpen = false;
+    },
+    toggleSidebar(menu) {
+      (menu === '') ? this.isOpen = false : this.isOpen = true;
+      this.sidebarMenu = menu;
+    },
+  },
+   beforeRouteEnter(to, from, next) {
+    store.dispatch('loadMessages').then(() => {
+      next();
+    });
+  },
+  computed() {
+
+  },
+};
+</script>
 
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background: linear-gradient(to right, #434343 0%, black 100%);
+  display: flex;
+}
+.menu {
+/* position: fixed; */
+z-index: 0;
+width: 20%;
+}
+.content {
+width: 98%;
+border: solid 1px red;
+margin: 0 2%;
+}
+.sidebarButton {
+  z-index: 1;
+  position: absolute;
+}
+
+
+ul {
+  list-style: none;
+  margin: 0;
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -26,6 +93,7 @@
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   box-sizing: border-box;
+  background: linear-gradient(60deg, #434343 0%, black 100%);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -48,6 +116,7 @@ body {
 
 main {
   display: block;
+  margin-top: 8%;
 }
 
 /**
