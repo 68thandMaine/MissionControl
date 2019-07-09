@@ -1,6 +1,6 @@
 <template>
-  <div class='messagebox_view' data-cy='messagebox_view'>
-    <Inbox
+  <div class='inbox_view' data-cy='inbox_view'>
+    <MessageList
     :messages='inbox'
     @message='handleViewMessage'/>
     <Message />
@@ -11,8 +11,8 @@
 import { mapState } from 'vuex';
 import store from '../../store/store';
 // Components
-import Inbox from '../components/message_box/Inbox';
-import Message from '../components/message_box/Message';
+import MessageList from '../components/inbox/MessageList';
+import Message from '../components/inbox/Message';
 
 export default {
   name: 'MessageBox',
@@ -20,7 +20,7 @@ export default {
     inbox: Array,
   },
   components: {
-    Inbox,
+    MessageList,
     Message,
   },
   // data() {
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style>
-.messagebox_view {
+.inbox_view {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

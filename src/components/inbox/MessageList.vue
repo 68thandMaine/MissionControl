@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'Inbox',
+  name: 'MessageList',
   props: {
     messages: {
       type: Array,

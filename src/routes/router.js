@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 // VIEWS
 import Dashboard from '../views/Dashboard.vue';
-import MessageBox from '../views/MessageBox.vue';
+import Inbox from '../views/Inbox.vue';
 import NotFound from '../components/error_page/NotFound.vue';
 
 
@@ -38,8 +38,8 @@ const router = new Router({
     },
     {
       path: '/inbox',
-      name: 'messageBox',
-      component: MessageBox,
+      name: 'inbox',
+      component: Inbox,
       props: true,
     },
 
