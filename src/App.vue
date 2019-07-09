@@ -1,47 +1,72 @@
 <template>
   <div id="app">
-    <div v-if='isOpen'>
-      <Sidebar />
+    <div class='menu' v-if='isOpen'>
+      <Sidebar :activeMenu='sidebarMenu'/>
     </div>
-      <router-view @click='toggleSidebar'/>
+    <Toolbar @click='toggleSidebar'/>
+    <SidebarButton class='sidebarButton' @click='closeSidebar' />
+    <div class='content'>
+      <main>
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-import Sidebar from '../src/components/navigation/Sidebar';
+import Sidebar from './components/sidebar/Sidebar';
+import SidebarButton from '@/components/navigation/SidebarToggleButton';
+import Toolbar from '@/components/navigation/Toolbar';
 
 export default {
   name: 'App',
   components: {
-    Sidebar
+    Sidebar,
+    SidebarButton,
+    Toolbar,
   },
   data() {
     return {
       isOpen: false,
-    }
+      sidebarMenu: ''
+    };
   },
   methods: {
-    toggleSidebar() {
-      if(this.isOpen) this.isOpen = false;
-      else this.isOpen = true;
+    closeSidebar() {
+      this.isOpen = false;
+    },
+    toggleSidebar(menu) {
+      (menu === '') ? this.isOpen = false : this.isOpen = true;
+      this.sidebarMenu = menu;
     },
   },
   computed() {
 
-  }
-}
+  },
+};
 </script>
 
-
 <style>
-* {
-  border: solid 1px black;
-}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  background: linear-gradient(to right, #434343 0%, black 100%);
+  display: flex;
+}
+.menu {
+/* position: fixed; */
+z-index: 0;
+width: 20%;
+}
+.content {
+width: 98%;
+border: solid 1px red;
+margin: 0 2%;
+}
+.sidebarButton {
+  z-index: 1;
+  position: absolute;
 }
 
 
@@ -63,7 +88,7 @@ ul {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   box-sizing: border-box;
-  background: #34424D
+  background: linear-gradient(60deg, #434343 0%, black 100%);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -86,6 +111,7 @@ body {
 
 main {
   display: block;
+  margin-top: 8%;
 }
 
 /**

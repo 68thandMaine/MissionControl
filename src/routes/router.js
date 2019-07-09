@@ -16,7 +16,7 @@ const router = new Router({
     {
       path: '/',
       name: 'dashboard',
-      component: Dashboard
+      component: Dashboard,
     },
     {
       path: '*',

@@ -1,28 +1,29 @@
 <template>
-  <div>
-    <SidebarButton @click='openSidebar' />
+  <div id='dashboard_wrapper'>
+    <h1>Fuck me im the dashboard</h1>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import SidebarButton from '@/components/navigation/SidebarToggleButton';
+
 
 export default {
   name: 'Dashboard',
   components: {
-    SidebarButton,
+
   },
   methods: {
     openSidebar() {
-      this.$emit('click')
+      this.$emit('click');
     },
-    },
+  },
 };
 </script>
 
 <style>
-  #contentWrapper{
-    width: 100%;
-  }
+h1 {
+  color: white;
+}
 </style>

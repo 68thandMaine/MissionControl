@@ -39,18 +39,17 @@ export default {
 
 <style>
 #messageListWrapper {
-border: dashed 3px black;
 float: left;
-position: fixed;
-width: 15%;
+position: relative;
+
+/* width: 100%; */
 }
 #messageList {
-  border: solid 2px red;
+
 }
 #messageWrapper {
   border: dashed 3px black;
   width: 85%;
-  position: fixed;
 }
 
 </style>

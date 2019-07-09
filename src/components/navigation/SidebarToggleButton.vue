@@ -1,5 +1,5 @@
 <template>
-  <button class='toggleButton' @click='handleClick'>
+  <button class='toggleButton' @click='handleClick' data-cy='sidebar_button'>
     hi
     <div class='toggleButtonLine'/>
     <div class='toggleButtonLine'/>
@@ -9,18 +9,18 @@
 
 <script>
 export default {
-name: 'SidebarToggleButton',
-methods: {
-  handleClick() {
-    this.$emit('click')
-  }
-},
-}
+  name: 'SidebarToggleButton',
+  methods: {
+    handleClick() {
+      this.$emit('click');
+    },
+  },
+};
 </script>
 
 <style>
 .toggleButton {
-  position: absolute;
+  /* position: absolute; */
   background: transparent;
   border: none;
   cursor: pointer;
