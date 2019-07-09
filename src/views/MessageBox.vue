@@ -1,8 +1,9 @@
 <template>
   <div>
     <Inbox
-    :messages='messages'
+    :messages='inbox'
     @message='handleViewMessage'/>
+
   </div>
 </template>
 
@@ -13,6 +14,9 @@ import Inbox from '../components/message_box/Inbox';
 
 export default {
   name: 'MessageBox',
+  props: {
+    inbox: Array,
+  },
   components: {
     Inbox,
   },
@@ -21,16 +25,6 @@ export default {
 
   //   };
   // },
-  mounted() {
-    console.log(this.$store.state);
-    console.log(this.messages);
-    // this.$store.dispatch('loadMessages')
-  },
-  computed: {
-    ...mapState({
-      messages: state => state.message.messagesArray,
-    }),
-  },
   methods: {
     handleViewMessage(id) {
       console.log(id);
@@ -38,7 +32,10 @@ export default {
     // to set the state for the message that should be displayed.
     },
   },
-
+  mounted() {
+    console.log('messagebox props', this.$route.params)
+    console.log('message box props inbox', this.inbox)
+  }
 };
 </script>
 

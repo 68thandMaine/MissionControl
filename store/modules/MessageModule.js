@@ -22,6 +22,7 @@ const messageModule = {
   },
   actions: {
     loadMessages({ commit, state, dispatch }, data) {
+      console.log('!!!!!! LOAD MESSAGES HIT !!!!!!');
       commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 1);
       return MessageService.getMessages(data).then((res) => {
         commit(mutations.SET_MESSAGESARRAY, res);

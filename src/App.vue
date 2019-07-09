@@ -3,17 +3,22 @@
     <div class='menu' v-if='isOpen'>
       <Sidebar :activeMenu='sidebarMenu'/>
     </div>
+    <button @click='showState'>Show state</button>
     <Toolbar @click='toggleSidebar'/>
     <SidebarButton class='sidebarButton' @click='closeSidebar' />
     <div class='content'>
       <main>
-        <router-view />
+        <router-view
+        :inbox='inbox'/>
       </main>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import store from '../store/store';
+// Components
 import Sidebar from './components/sidebar/Sidebar';
 import SidebarButton from '@/components/navigation/SidebarToggleButton';
 import Toolbar from '@/components/navigation/Toolbar';
@@ -31,6 +36,16 @@ export default {
       sidebarMenu: ''
     };
   },
+
+ created() {
+   console.log('created')
+   store.dispatch('loadMessages');
+ },
+  computed: {
+    ...mapState({
+      inbox: state => state.message.messagesArray,
+    }),
+  },
   methods: {
     closeSidebar() {
       this.isOpen = false;
@@ -39,16 +54,12 @@ export default {
       (menu === '') ? this.isOpen = false : this.isOpen = true;
       this.sidebarMenu = menu;
     },
+    showState() {
+      console.log('state',this.$store.state);
+      console.table('mapState inbox',  this.inbox)
+    }
   },
-   beforeRouteEnter(to, from, next) {
-    store.dispatch('loadMessages').then(() => {
-      next();
-    });
-  },
-  computed() {
-
-  },
-};
+}
 </script>
 
 <style>

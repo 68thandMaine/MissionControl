@@ -40,7 +40,9 @@ const router = new Router({
       path: '/inbox',
       name: 'messageBox',
       component: MessageBox,
+      props: true,
     },
+
   ],
 });
 
