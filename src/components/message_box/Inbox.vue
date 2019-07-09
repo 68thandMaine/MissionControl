@@ -3,13 +3,15 @@
   <div id='messageList'
       v-for="(message, index) in messages"
       :key='index'>
-    <h1>{{message.subject}}</h1>
-    <h2>{{message.createdAt}}</h2>
-  </div>
-  <div id='messageWrapper'>
-    hie
+    <div class=''>
+      <p>{{message.subject}}</p>
+      <p>{{message.email}}</p>
+    </div>
+    <div class=''>
+      <p>{{message.createdAt}}</p>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -41,15 +43,10 @@ export default {
 #messageListWrapper {
 float: left;
 position: relative;
-
-/* width: 100%; */
 }
 #messageList {
-
-}
-#messageWrapper {
-  border: dashed 3px black;
-  width: 85%;
+  border: 1px solid yellow;
+  display: flex;
 }
 
 </style>

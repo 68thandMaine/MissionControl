@@ -3,9 +3,9 @@
     <div class='menu' v-if='isOpen'>
       <Sidebar :activeMenu='sidebarMenu'/>
     </div>
-    <button @click='showState'>Show state</button>
-    <Toolbar @click='toggleSidebar'/>
-    <SidebarButton class='sidebarButton' @click='closeSidebar' />
+    <!-- <button @click='showState'>Show state</button> -->
+    <Toolbar @click='setSidebarMenu'/>
+    <SidebarButton class='sidebarButton' @click='toggleSidebar' />
     <div class='content'>
       <main>
         <router-view
@@ -47,10 +47,10 @@ export default {
     }),
   },
   methods: {
-    closeSidebar() {
-      this.isOpen = false;
+    toggleSidebar() {
+      this.isOpen = !this.isOpen;
     },
-    toggleSidebar(menu) {
+    setSidebarMenu(menu) {
       (menu === '') ? this.isOpen = false : this.isOpen = true;
       this.sidebarMenu = menu;
     },
