@@ -1,5 +1,5 @@
 <template>
-<div id='messageListWrapper'>
+<div id='messageListWrapper' data-cy='messagelist'>
   <div id='messageList'
       v-for="(message, index) in messages"
       :key='index'>

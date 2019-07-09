@@ -4,25 +4,25 @@
       <div class='spacer' />
       <div class='toolbar_navigation-items'>
         <ul>
-          <li>
+          <li @click='viewHome' data-cy='viewHome'>
             <font-awesome-icon icon='home' />
-            <span @click='viewHome'>Home</span>
+            <span>Home</span>
           </li>
-          <li>
+          <li @click='viewNewContent' data-cy='viewNewContent'>
             <font-awesome-icon icon='plus-circle' />
-            <span @click='viewNewContent'>Add Art</span>
+            <span>Add Art</span>
           </li>
-          <li>
+          <li @click='viewElenor' data-cy='viewElenor'>
             <font-awesome-icon icon='cat' />
-            <span @click='viewElenor'>Elenor</span>
+            <span>Elenor</span>
           </li>
-          <li>
+          <li @click='viewInbox' data-cy='viewInbox'>
             <font-awesome-icon icon='envelope' />
-            <span @click='viewInbox'>Messages</span>
+            <span>Messages</span>
           </li>
-          <li>
+          <li @click='viewProfile' data-cy='viewProfile'>
              <font-awesome-icon icon='portrait' />
-              <span @click='viewProfile'>Profile</span>
+              <span>Profile</span>
           </li>
         </ul>
       </div>

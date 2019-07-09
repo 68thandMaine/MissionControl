@@ -1,7 +1,7 @@
 <template>
-	<header class='sidebar'>
+	<header class='sidebar' data-cy='sidebar'>
     <nav class='sidebarNavigation'>
-      <div class='toolbarNavigationItems'>
+      <div class='sidebarMenuItems' data-cy='sidebarMenu'>
         <component :is='this.activeMenu' />
       </div>
     </nav>
@@ -46,7 +46,7 @@ ul {
   left: 0;
   top:0;
 }
-.toolbarNavigationItems {
+.sidebarMenuItems {
 display: flex;
 align-items: center;
 padding-top: 30%;

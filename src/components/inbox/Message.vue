@@ -1,5 +1,5 @@
 <template>
-  <div class='message_wrapper'>
+  <div class='message_wrapper' data-cy='message'>
     I'm a message
   </div>
 </template>
