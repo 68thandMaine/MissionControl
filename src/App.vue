@@ -69,13 +69,11 @@ export default {
   display: flex;
 }
 .menu {
-/* position: fixed; */
 z-index: 0;
 width: 20%;
 }
 .content {
 width: 98%;
-border: solid 1px red;
 margin: 0 2%;
 }
 .sidebarButton {

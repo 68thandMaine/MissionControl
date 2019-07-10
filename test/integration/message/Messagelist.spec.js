@@ -1,20 +1,20 @@
 describe('MessageList component', () => {
-  context('no messages in database', () => {
+  context('No messages in database', () => {
     it('if no messages exist, message is shown', () => {
       cy.emptyMessageDatatable();
       cy.get("[data-cy='noMessages']").should('exist');
     });
   });
-  context('messages in database', () => {
+  context('If messages in database', () => {
     before(() => {
       cy.goToInbox();
     })
     it('if messages exist, list is shown', () => {
       cy.get("[data-cy='message']").should('exist').should(($list) => {
-        expect($list).to.have.length.greaterThan(1)
+        expect($list).to.have.length.greaterThan(1);
       });
     });
-    it.only('selecting a message gives it the active class', () => {
+    it('selecting a message gives it the active class', () => {
       cy.get("[data-cy='message']").eq(1).click()
         .should('have.class', 'currentMessage');
     });
@@ -26,7 +26,7 @@ describe('MessageList component', () => {
     it('there is a delete icon within each message', () {
 
     });
-    it('there is a checkbox option avialable for deleting messages', () => {
+    it('delete icon opens modal with delete question', () => {
 
     });
      */

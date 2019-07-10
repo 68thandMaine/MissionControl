@@ -2,7 +2,7 @@
 	<header class='sidebar' data-cy='sidebar'>
     <nav class='sidebarNavigation'>
       <div class='sidebarMenuItems' data-cy='sidebarMenu'>
-        <component :is='this.activeMenu' />
+        <component :is='this.sidebarMenu' />
       </div>
     </nav>
 	</header>
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     sidebarMenu() {
-
+      return this.activeMenu
     }
   }
 };

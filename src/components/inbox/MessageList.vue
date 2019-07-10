@@ -1,21 +1,25 @@
 <template>
 <div id='messageListWrapper' >
-<div v-if="messages != '' ">
-  <div id='message'
-      data-cy='message'
-      v-for="(message, index) in messages"
-      :key='index'
-      :class="{currentMessage:index == currentMessage}"
-      @click='selectMessage(index, message.id)'>
-    <div class='message_details'>
-      <p>{{message.subject}}</p>
-      <p>{{message.createdAt}}</p>
-    </div>
-    <div class='message_email'>
-      <p>{{message.email}}</p>
+  <div v-if="messages != '' ">
+    <div id='message'
+        data-cy='message'
+        v-for="(message, index) in messages"
+        :key='index'
+        :class="{currentMessage:index == currentMessage}"
+        @click='selectMessage(index, message.id)'>
+      <div class='message_details'>
+        <p>{{message.subject}}</p>
+        <p>{{message.createdAt}}</p>
+        <!-- <div class='delete_wrapper'>
+          <font-awesome-icon icon='trash' />
+          <input type='checkbox'/>
+        </div> -->
+      </div>
+      <div class='message_email'>
+        <p>{{message.email}}</p>
+      </div>
     </div>
   </div>
-</div>
   <div v-else data-cy='noMessages'>
     <h1>HELP</h1>
   </div>
@@ -64,10 +68,10 @@ width:20%;
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 2%;
-  border-bottom: solid 1px whitesmoke;
+  z-index: 0;
 }
-#message:hover{
-  border: solid 1px white;
+#message:hover {
+  cursor: pointer;
 }
 #message p {
   margin: 0;
@@ -84,5 +88,11 @@ width:20%;
 }
 .currentMessage {
   border-right: 2px solid goldenrod;
+  border-bottom: 2px solid goldenrod;
+  border-bottom-right-radius: 50%;
+}
+
+.delete_wrapper {
+  z-index: 10;
 }
 </style>
