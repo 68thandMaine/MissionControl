@@ -1,10 +1,12 @@
 <template>
 <div id='messageListWrapper' >
 <div v-if="messages != '' ">
-  <div id='messageList'
-  data-cy='messagelist'
+  <div id='message'
+      data-cy='message'
       v-for="(message, index) in messages"
-      :key='index'>
+      :key='index'
+      :class="{currentMessage:index == currentMessage}"
+      @click='selectMessage(index, message.id)'>
     <div class='message_details'>
       <p>{{message.subject}}</p>
       <p>{{message.createdAt}}</p>
@@ -28,16 +30,21 @@ export default {
       type: Array,
       required: true,
     },
+    value: String,
   },
   data() {
-    return {
+      return {
+          isActive: false,
+          currentMessage: null,
+      };
+    },
+  methods:{
+      selectMessage(index, id) {
+        (this.currentMessage == index) ? this.currentMessage = null : this.currentMessage = index;
 
-    };
-  },
+      }
+    },
   computed: {
-    // formattedDate() {
-    // const
-    // },
   },
   mounted() {
     console.log('inbox messagearray', this.messages);
@@ -52,14 +59,17 @@ float: left;
 position: relative;
 width:20%;
 }
-#messageList {
+#message {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 2%;
   border-bottom: solid 1px whitesmoke;
 }
-#messageList p {
+#message:hover{
+  border: solid 1px white;
+}
+#message p {
   margin: 0;
   color: white;
 }
@@ -72,5 +82,7 @@ width:20%;
 .message_email {
   width:100%;
 }
-
+.currentMessage {
+  border-right: 2px solid goldenrod;
+}
 </style>
