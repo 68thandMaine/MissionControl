@@ -38,8 +38,10 @@ export default {
   },
 
  created() {
-   console.log('created')
    store.dispatch('loadMessages');
+   console.log('created')
+   console.log('state',this.$store.state);
+      console.table('mapState inbox',  this.inbox)
  },
   computed: {
     ...mapState({
@@ -54,10 +56,6 @@ export default {
       (menu === '') ? this.isOpen = false : this.isOpen = true;
       this.sidebarMenu = menu;
     },
-    showState() {
-      console.log('state',this.$store.state);
-      console.table('mapState inbox',  this.inbox)
-    }
   },
 }
 </script>

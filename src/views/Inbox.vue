@@ -1,7 +1,7 @@
 <template>
   <div class='inbox_view' data-cy='inbox_view'>
     <MessageList
-    :messages='inbox'
+    :messages= 'inbox'
     @message='handleViewMessage'/>
     <Message />
   </div>

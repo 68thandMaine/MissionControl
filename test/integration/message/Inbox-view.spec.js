@@ -1,4 +1,4 @@
-describe('MessageBox view behavior', () => {
+describe('Inbox view behavior', () => {
   before(() => {
     cy.visit('./');
   });
