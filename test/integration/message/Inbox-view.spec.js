@@ -15,7 +15,7 @@ describe('Inbox view behavior', () => {
       cy.get("[data-cy='sidebar']").should('be.visible');
     });
     it('the message list component should be visible', () => {
-      cy.get("[data-cy='messagelist']").should('be.visible');
+      cy.get("[data-cy='messageList']").should('be.visible');
     });
     it('the message component should be visible', () => {
       cy.get("[data-cy='message']").should('be.visible');
@@ -26,7 +26,7 @@ describe('Inbox view behavior', () => {
           .should('have.attr', 'data-cy')
           .and('eq', 'inbox_menu');
       });
-      it.only('the sidebar menu exists after the sidebar has been opened and closed', () => {
+      it('the sidebar menu exists after the sidebar has been opened and closed', () => {
         cy.get("[data-cy='sidebar_button']").click();
         cy.get("[data-cy='sidebar']")
           .should('not.exist')

@@ -3,7 +3,7 @@
   <div class='currentList'>{{filteredMessages}}</div>
   <div v-if="messages != '' ">
     <div id='message'
-        data-cy='message'
+        data-cy='messages'
         v-for="(message, index) in messages"
         :key='index'
         :class="{currentMessage:index == currentMessage}"

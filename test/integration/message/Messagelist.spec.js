@@ -10,12 +10,12 @@ describe('MessageList component', () => {
       cy.goToInbox();
     })
     it('if messages exist, list is shown', () => {
-      cy.get("[data-cy='message']").should('exist').should(($list) => {
+      cy.get("[data-cy='messages']").should('exist').should(($list) => {
         expect($list).to.have.length.greaterThan(1);
       });
     });
     it('selecting a message gives it the active class', () => {
-      cy.get("[data-cy='message']").eq(1).click()
+      cy.get("[data-cy='messages']").eq(1).click()
         .should('have.class', 'currentMessage');
     });
 
