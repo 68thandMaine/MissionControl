@@ -1,7 +1,8 @@
 <template>
   <div class='inbox_view' data-cy='inbox_view'>
     <MessageList
-    :messages= 'inbox'
+    :messages= 'messages'
+    :filteredMessages = 'filteredMessages'
     @message='handleViewMessage'/>
     <Message />
   </div>
@@ -17,7 +18,8 @@ import Message from '../components/inbox/Message';
 export default {
   name: 'MessageBox',
   props: {
-    inbox: Array,
+    messages: Array,
+    filteredMessages: String,
   },
   components: {
     MessageList,
@@ -37,15 +39,17 @@ export default {
   },
   mounted() {
     console.log('messagebox props', this.$route.params)
-    console.log('message box props inbox', this.inbox)
+    console.log('message box props messages', this.messages)
   }
 };
 </script>
 
 <style>
-.inbox_view {
+.inbox_view{
+  border: solid 3px yellow;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  overflow: hidden;
 }
 </style>

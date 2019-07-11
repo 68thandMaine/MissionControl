@@ -1,6 +1,6 @@
 <template>
   <div id='dashboard_wrapper'>
-    <h1>Fuck me im the dashboard</h1>
+    <h1>It's me im the dashboard</h1>
 
   </div>
 </template>

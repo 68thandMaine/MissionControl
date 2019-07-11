@@ -2,7 +2,7 @@
 	<header class='sidebar' data-cy='sidebar'>
     <nav class='sidebarNavigation'>
       <div class='sidebarMenuItems' data-cy='sidebarMenu'>
-        <component :is='this.sidebarMenu' />
+        <component @click='handelToggleSidebar' :menuToShow='this.sidebarActiveMenuOption' :is='this.sidebarMenu' />
       </div>
     </nav>
 	</header>
@@ -15,18 +15,29 @@ export default {
   name: 'Sidebar',
   props: {
     activeMenu: String,
+    activeMenuOption: String
   },
   components: {
     InboxMenu,
   },
   data() {
     return {
-
+      // activeMenuOption: ''
     }
   },
   computed: {
     sidebarMenu() {
       return this.activeMenu
+    },
+    sidebarActiveMenuOption() {
+      return this.activeMenuOption
+    },
+  },
+  methods: {
+    handelToggleSidebar(activeMenuOption) {
+      console.log(activeMenuOption)
+      this.$emit('setActiveMenuOption', activeMenuOption)
+      // this.activeMenuOption = activeMenu;
     }
   }
 };
@@ -39,10 +50,9 @@ ul {
   width: 100%;
 }
 .sidebar {
-  background-color: #34424D;
+  background-color: #34424D ;
   width: 15%;
-  position:fixed;
-  height: 100%;
+  height: 100vh;
   left: 0;
   top:0;
 }

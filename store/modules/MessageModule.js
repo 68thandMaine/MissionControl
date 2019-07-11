@@ -42,9 +42,12 @@ const messageModule = {
     }
   },
   getters: {
-    getMessages(state) {
-      return state.messagesArray;
+    getUnreadMessages: (state) => {
+      return state.messagesArray.filter(message => message.opened === false);
     },
+    getRepliedMessages: (state) => {
+      return state.messagesArray.filter(message => message.replied === true);
+    }
   },
 };
 

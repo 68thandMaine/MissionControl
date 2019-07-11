@@ -64,6 +64,7 @@ methods: {
     background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
     height: 7%;
     position: fixed;
+    /* display: block; */
     left: 0;
     top: 0;
     width: 100%;

@@ -16,6 +16,7 @@ name: 'Message',
   border: solid 1px maroon;
   background: white;
   width: 96%;
+  height: 100%;
   margin: 0 2%;
 }
 </style>

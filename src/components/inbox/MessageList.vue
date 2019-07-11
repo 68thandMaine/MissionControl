@@ -1,5 +1,6 @@
 <template>
-<div id='messageListWrapper' >
+<div id='messageListWrapper' data-cy='messageList'>
+  <div class='currentList'>{{filteredMessages}}</div>
   <div v-if="messages != '' ">
     <div id='message'
         data-cy='message'
@@ -34,21 +35,23 @@ export default {
       type: Array,
       required: true,
     },
+    filteredMessages: String,
     value: String,
   },
   data() {
       return {
-          isActive: false,
           currentMessage: null,
       };
     },
   methods:{
       selectMessage(index, id) {
         (this.currentMessage == index) ? this.currentMessage = null : this.currentMessage = index;
-
       }
     },
   computed: {
+    // currentListTitle() {
+    //   if(this.)
+    // }
   },
   mounted() {
     console.log('inbox messagearray', this.messages);
@@ -60,8 +63,11 @@ export default {
 
 #messageListWrapper {
 float: left;
-position: relative;
-width:20%;
+/* height: 90vh; */
+border: solid 3px pink;
+/* position: relative; */
+width: 25%;
+overflow: scroll;
 }
 #message {
   display: flex;
@@ -88,8 +94,7 @@ width:20%;
 }
 .currentMessage {
   border-right: 2px solid goldenrod;
-  border-bottom: 2px solid goldenrod;
-  border-bottom-right-radius: 50%;
+
 }
 
 .delete_wrapper {
