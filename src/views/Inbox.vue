@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import store from '../../store/store';
+
 // Components
 import MessageList from '../components/inbox/MessageList';
 import Message from '../components/inbox/Message';

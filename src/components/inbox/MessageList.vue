@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import store from '../../../store/store';
+
 export default {
   name: 'MessageList',
   props: {
@@ -46,6 +48,7 @@ export default {
   methods:{
       selectMessage(index, id) {
         (this.currentMessage == index) ? this.currentMessage = null : this.currentMessage = index;
+        store.dispatch('selectMessage', id);
       }
     },
   computed: {

@@ -18,6 +18,13 @@ describe('MessageList component', () => {
       cy.get("[data-cy='messages']").eq(1).click()
         .should('have.class', 'currentMessage');
     });
+    it('selecting a message changes shows content in the message component', () => {
+      cy.get("[data-cy='no_message_selected']").should('exist').and('be.visible');
+      cy.get("[data-cy='messages']").children().eq(0).click();
+      cy.get("[data-cy='no_message_selected']").should('not.exist').and('not.be.visible');
+
+      // Adjust test to see if you can see content rather than a div not existing
+    });
 
     /**
      * The tests below will be completed when delete

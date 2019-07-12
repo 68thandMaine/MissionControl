@@ -15,7 +15,7 @@ import * as mutations from '../mutations/mutation-types';
 const messageModule = {
   state: {
     messagesArray: [],
-    message: {},
+    message: null,
 
     messagesArrayLoadStatus: 0,
     messageLoadStatus: 0,
@@ -32,6 +32,13 @@ const messageModule = {
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });
     },
+    selectMessage ({commit, state, dispatch}, data) {
+      console.log('!!!!!! SELECT MESSAGE HIT !!!!!!');
+      commit(mutations.SET_MESSAGE_LOAD_STATUS, 2)
+      let message = state.messagesArray.find(message => message.id === data);
+      console.log(message);
+      commit(mutations.SET_MESSAGE, message)
+    },
   },
   mutations: {
     [mutations.SET_MESSAGESARRAY_LOAD_STATUS](state, status) {
@@ -39,7 +46,13 @@ const messageModule = {
     },
     [mutations.SET_MESSAGESARRAY](state, messagesArray) {
       state.messagesArray = messagesArray;
-    }
+    },
+    [mutations.SET_MESSAGE_LOAD_STATUS](state, status) {
+      state.messageLoadStatus = status;
+    },
+    [mutations.SET_MESSAGE](state, message) {
+      state.message = message;
+    },
   },
   getters: {
     getUnreadMessages: (state) => {
