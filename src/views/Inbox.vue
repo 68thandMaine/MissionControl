@@ -45,7 +45,7 @@ export default {
 
 <style>
 .inbox_view{
-  border: solid 3px yellow;
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

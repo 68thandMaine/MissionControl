@@ -6,7 +6,7 @@
         :activeMenuOption='activeSidebarMenuOption'
         @setActiveMenuOption='handleSetActiveMenuOption'  />
 
-    <button @click='showState'>Show state</button>
+    <!-- <button @click='showState'>Show state</button> -->
     <Toolbar @click='setSidebarMenu'/>
     <SidebarButton class='sidebarButton' @click="toggleSidebar" />
     <div class='content'>
@@ -104,7 +104,6 @@ export default {
 }
 
 .content {
-border: solid 4px darkcyan;
 
 overflow: scroll;
 width: 98%;

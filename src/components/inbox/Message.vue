@@ -2,16 +2,27 @@
   <div class='message_wrapper' data-cy='message_wrapper'>
     <div class='no_message_selected' v-if='this.message === null' data-cy='no_message_selected'>
       No message
-      </div>
-      <div v-else>
-        <div class='message' data-cy='message'>
-       <h2>{{this.message.subject}}</h2>
-       <h3>{{this.message.email}}</h3>
-       <h4>{{this.message.createdAt}}</h4>
-       <p>{{this.message.message}}</p>
+    </div>
 
+    <div v-else class='message' data-cy='message'>
+      <div class='card'>
+        <div class='card_header'>
+          <p class='card_header-subject'>{{this.message.subject}}</p>
+          <h4 class='card_header-date'>{{this.message.createdAt}}</h4>
+          <p class='card_header-email'>{{this.message.email}}</p>
         </div>
+        <div class='card_body'>
+          <p>{{this.message.message}}</p>
+          <p>Sincerely,</p>
+          <p>{{this.message.firstName}} {{this.message.lastName}}</p>
         </div>
+      </div>
+      <div class='button_wrapper'>
+        <button>Reply </button>
+        <button>Delete</button>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -39,10 +50,45 @@ name: 'Message',
 
 <style>
 .message_wrapper {
-  border: solid 1px maroon;
   background: white;
   width: 96%;
-  height: 100%;
-  margin: 0 2%;
+  /* margin: */
+}
+.message {
+  margin-top: 2%;
+  /* display: flex;s */
+  /* flex-wrap: nowrap; */
+}
+.card {
+
+  margin: auto;
+  width: 75%;
+}
+.card_header {
+
+  flex-flow: flex-start;
+}
+.card_header-subject {
+  display: inline-block;
+  margin: 0;
+  font-size: 3rem;
+}
+.card_header-date {
+  margin: auto;
+  float: right;
+  bottom: 0;
+  display: inline-block;
+}
+.card_header-email {
+  margin: 0;
+  font-size: 1.5rem
+}
+.card_body {
+  border-top: solid 1px black;
+  margin-top: 2%;
+}
+.button_wrapper {
+  display: flex;
+  justify-content: center;
 }
 </style>

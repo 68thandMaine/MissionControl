@@ -66,9 +66,6 @@ export default {
 
 #messageListWrapper {
 float: left;
-/* height: 90vh; */
-border: solid 3px pink;
-/* position: relative; */
 width: 25%;
 overflow: scroll;
 }
