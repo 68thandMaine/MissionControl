@@ -32,8 +32,8 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "callback" */ '../views/Callback.vue'),
     },
     {
-      path: '/newProfile',
-      name: 'newProfile',
+      path: '/profile',
+      name: 'profile',
       component: () => import('../views/forms/ProfileForm.vue'),
     },
     {

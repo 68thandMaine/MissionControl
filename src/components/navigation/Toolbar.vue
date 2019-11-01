@@ -48,8 +48,8 @@ methods: {
     // this.$emit('click', 'inbox');
   },
   viewProfile() {
-    // this.$router.push({ path:'/inbox' });
-    // this.$emit('click', 'inbox');
+    this.$router.push({ path:'/profile' });
+    this.$emit('click', 'inbox');
   },
   viewNewContent() {
     // this.$router.push({ path:'/inbox' });
