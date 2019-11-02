@@ -41,16 +41,16 @@ export default {
     value: String,
   },
   data() {
-      return {
-          currentMessage: null,
-      };
+    return {
+      currentMessage: null,
+    };
+  },
+  methods: {
+    selectMessage(index, id) {
+      (this.currentMessage == index) ? this.currentMessage = null : this.currentMessage = index;
+      store.dispatch('selectMessage', id);
     },
-  methods:{
-      selectMessage(index, id) {
-        (this.currentMessage == index) ? this.currentMessage = null : this.currentMessage = index;
-        store.dispatch('selectMessage', id);
-      }
-    },
+  },
   computed: {
     // currentListTitle() {
     //   if(this.)

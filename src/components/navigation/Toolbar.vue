@@ -32,30 +32,30 @@
 
 <script>
 export default {
-name: 'Toolbar',
-components: {},
-methods: {
-  viewInbox() {
-    this.$router.push({ path:'/inbox' });
-    this.$emit('click', 'InboxMenu');
-  },
-  viewHome() {
-    this.$router.push ({ path: '/'});
-    this.$emit('click', '');
-  },
-  viewElenor() {
+  name: 'Toolbar',
+  components: {},
+  methods: {
+    viewInbox() {
+      this.$router.push({ path: '/inbox' });
+      this.$emit('click', 'InboxMenu');
+    },
+    viewHome() {
+      this.$router.push({ path: '/' });
+      this.$emit('click', '');
+    },
+    viewElenor() {
     // this.$router.push({ path:'/inbox' });
     // this.$emit('click', 'inbox');
-  },
-  viewProfile() {
+    },
+    viewProfile() {
     // this.$router.push({ path:'/inbox' });
     // this.$emit('click', 'inbox');
-  },
-  viewNewContent() {
+    },
+    viewNewContent() {
     // this.$router.push({ path:'/inbox' });
     // this.$emit('click', 'inbox');
+    },
   },
-}
 };
 </script>
 

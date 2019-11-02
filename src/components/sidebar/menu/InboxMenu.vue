@@ -10,27 +10,27 @@
 
 <script>
 export default {
- name: 'InboxMenu',
+  name: 'InboxMenu',
   props: {
     menuToShow: String,
   },
   computed: {
     activeMenu() {
       return this.menuToShow;
-    }
+    },
   },
   methods: {
     viewAllMessages() {
       this.$emit('click', 'all');
     },
     viewUnreadMessages() {
-      this.$emit('click','unread');
+      this.$emit('click', 'unread');
     },
     viewRepliedMessages() {
       this.$emit('click', 'replied');
     },
   },
-}
+};
 </script>
 
 <style>

@@ -31,18 +31,18 @@ import { mapState } from 'vuex';
 import store from '../../../store/store';
 
 export default {
-name: 'Message',
+  name: 'Message',
   computed: {
     ...mapState({
-     message: state => state.message.message,
+      message: state => state.message.message,
     }),
   },
-  methods:{
+  methods: {
     handleDeleteMessage(messageId) {
-      store.dispatch('removeMessage', messageId)
-    }
+      store.dispatch('removeMessage', messageId);
+    },
   },
-}
+};
 </script>
 
 <style>

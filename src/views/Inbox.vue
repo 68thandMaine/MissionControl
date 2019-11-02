@@ -37,9 +37,9 @@ export default {
     },
   },
   mounted() {
-    console.log('messagebox props', this.$route.params)
-    console.log('message box props messages', this.messages)
-  }
+    console.log('messagebox props', this.$route.params);
+    console.log('message box props messages', this.messages);
+  },
 };
 </script>
 

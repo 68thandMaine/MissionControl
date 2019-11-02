@@ -15,7 +15,7 @@ export default {
   name: 'Sidebar',
   props: {
     activeMenu: String,
-    activeMenuOption: String
+    activeMenuOption: String,
   },
   components: {
     InboxMenu,
@@ -23,23 +23,23 @@ export default {
   data() {
     return {
       // activeMenuOption: ''
-    }
+    };
   },
   computed: {
     sidebarMenu() {
-      return this.activeMenu
+      return this.activeMenu;
     },
     sidebarActiveMenuOption() {
-      return this.activeMenuOption
+      return this.activeMenuOption;
     },
   },
   methods: {
     handelToggleSidebar(activeMenuOption) {
-      console.log(activeMenuOption)
-      this.$emit('setActiveMenuOption', activeMenuOption)
+      console.log(activeMenuOption);
+      this.$emit('setActiveMenuOption', activeMenuOption);
       // this.activeMenuOption = activeMenu;
-    }
-  }
+    },
+  },
 };
 </script>
 
