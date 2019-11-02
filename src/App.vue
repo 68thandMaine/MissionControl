@@ -1,19 +1,28 @@
 <template>
   <div id="app">
-    <div class='menu' v-if='isOpen'>
-      <Sidebar :activeMenu='sidebarMenu'/>
+    <div class='sidebarwrapper' v-if='isOpen'>
+      <Sidebar
+        :activeMenu='sidebarMenu'
+        :activeMenuOption='activeSidebarMenuOption'
+        @setActiveMenuOption='handleSetActiveMenuOption'  />
     </div>
-    <Toolbar @click='toggleSidebar'/>
-    <SidebarButton class='sidebarButton' @click='closeSidebar' />
+    <!-- <button @click='showState'>Show state</button> -->
+    <Toolbar @click='setSidebarMenu'/>
+    <SidebarButton class='sidebarButton' @click="toggleSidebar" />
     <div class='content'>
       <main>
-        <router-view />
+        <router-view
+        :messages='this.handleFilterMessageList'
+        :filteredMessages='this.activeSidebarMenuOption' />
       </main>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+import store from '../store/store';
+// Components
 import Sidebar from './components/sidebar/Sidebar';
 import SidebarButton from '@/components/navigation/SidebarToggleButton';
 import Toolbar from '@/components/navigation/Toolbar';
@@ -28,22 +37,60 @@ export default {
   data() {
     return {
       isOpen: false,
-      sidebarMenu: ''
+      sidebarMenu: '',
+      // FOR REMEMBERING ACTIVE CLASS IN SIDEBAR MENU
+      activeSidebarMenuOption: '',
     };
   },
+
+ created() {
+   store.dispatch('loadMessages');
+ },
+  computed: {
+    ...mapState({
+      messages: state => state.message.messagesArray,
+    }),
+    ...mapGetters({
+      unreadMessages: 'getUnreadMessages',
+      repliedMessages: 'getRepliedMessages'
+    }),
+    handleFilterMessageList(){
+      if(this.activeSidebarMenuOption == '') {
+        return this.messages;
+      }
+      if(this.activeSidebarMenuOption == 'all') {
+        return this.messages;
+      }
+      if(this.activeSidebarMenuOption == 'unread') {
+        return this.unreadMessages;
+      }
+      if(this.activeSidebarMenuOption == 'replied') {
+        return this.repliedMessages;
+      }
+    }
+  },
   methods: {
-    closeSidebar() {
-      this.isOpen = false;
+    toggleSidebar(menuOption) {
+      this.isOpen = !this.isOpen;
+      (menuOption == undefined) ? null : this.activeSidebarMenuOption = menuOption;
     },
-    toggleSidebar(menu) {
+    handleSetActiveMenuOption(menuOption) {
+       (menuOption == undefined) ? null : this.activeSidebarMenuOption = menuOption;
+    },
+    setSidebarMenu(menu) {
       (menu === '') ? this.isOpen = false : this.isOpen = true;
       this.sidebarMenu = menu;
     },
-  },
-  computed() {
+    showState() {
+      console.log('state', this.$store.state)
+      console.log('messages', this.messages.length)
+      console.log('unread messages', this.unreadMessages.length)
+     console.log('replied messages', this.repliedMessages.length)
+     console.log('active sidebar menu', this.activeSidebarMenuOption)
 
+    }
   },
-};
+}
 </script>
 
 <style>
@@ -53,22 +100,24 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(to right, #434343 0%, black 100%);
   display: flex;
+  height: 100vh;
 }
-.menu {
-/* position: fixed; */
-z-index: 0;
-width: 20%;
-}
+
 .content {
-width: 98%;
-border: solid 1px red;
-margin: 0 2%;
+width: 97vw;
+margin: 5vw 2vw;
+position: relative;
+z-index: 1;
 }
+
+ .sidebarwrapper ~ .content {
+  width: 85vw;
+}
+
 .sidebarButton {
   z-index: 1;
   position: absolute;
 }
-
 
 ul {
   list-style: none;

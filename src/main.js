@@ -4,7 +4,7 @@ import Vue from 'vue';
 // Font awesome install
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faPlusCircle, faCat, faEnvelope, faPortrait, faHome,
+  faPlusCircle, faCat, faEnvelope, faPortrait, faHome, faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -14,7 +14,7 @@ import store from '../store/store';
 import auth from './auth';
 import './registerServiceWorker';
 
-library.add(faPlusCircle, faCat, faEnvelope, faPortrait, faHome);
+library.add(faPlusCircle, faCat, faEnvelope, faPortrait, faHome, faTrash);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 // Vue.use(BootstrapVue);

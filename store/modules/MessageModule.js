@@ -15,7 +15,7 @@ import * as mutations from '../mutations/mutation-types';
 const messageModule = {
   state: {
     messagesArray: [],
-    message: {},
+    message: null,
 
     messagesArrayLoadStatus: 0,
     messageLoadStatus: 0,
@@ -27,7 +27,20 @@ const messageModule = {
         commit(mutations.SET_MESSAGESARRAY, res);
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 2);
       }).catch((err) => {
-        console.log('loadMessages error: ', err);
+        commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
+      });
+    },
+    selectMessage({commit, state, dispatch}, data) {
+      commit(mutations.SET_MESSAGE_LOAD_STATUS, 2);
+      const message = state.messagesArray.find(message => message.id === data);
+      commit(mutations.SET_MESSAGE, message);
+    },
+    removeMessage({commit, state, dispatch}, id) {
+      return MessageService.deleteMessage(id).then(() => {
+        const messages = state.messagesArray.filter(message => message.id !== id);
+        commit(mutations.SET_MESSAGESARRAY, messages);
+        commit(mutations.SET_MESSAGE, null);
+      }).catch((err) => {
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });
     },
@@ -38,12 +51,21 @@ const messageModule = {
     },
     [mutations.SET_MESSAGESARRAY](state, messagesArray) {
       state.messagesArray = messagesArray;
-    }
+    },
+    [mutations.SET_MESSAGE_LOAD_STATUS](state, status) {
+      state.messageLoadStatus = status;
+    },
+    [mutations.SET_MESSAGE](state, message) {
+      state.message = message;
+    },
   },
   getters: {
-    getMessages(state) {
-      return state.messagesArray;
+    getUnreadMessages: (state) => {
+      return state.messagesArray.filter(message => message.opened === false);
     },
+    getRepliedMessages: (state) => {
+      return state.messagesArray.filter(message => message.replied === true);
+    }
   },
 };
 
