@@ -1,6 +1,6 @@
 <template>
 <div id='messageListWrapper' data-cy='messageList'>
-  <div class='currentList'>{{filteredMessages}}</div>
+  <!-- <div class='currentList'>{{filteredMessages}}</div> -->
   <div v-if="messages != '' ">
     <div id='message'
         data-cy='messages'
@@ -65,9 +65,9 @@ export default {
 <style >
 
 #messageListWrapper {
-float: left;
-width: 25%;
+width: 25vw;
 overflow: scroll;
+height: 87vh;
 }
 #message {
   display: flex;
@@ -84,13 +84,13 @@ overflow: scroll;
   color: white;
 }
 .message_details {
-  width:100%;
+  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 .message_email {
-  width:100%;
+  width: 100vw;
 }
 .currentMessage {
   border-right: 2px solid goldenrod;

@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-
-      <Sidebar v-if='isOpen'
+    <div class='sidebarwrapper' v-if='isOpen'>
+      <Sidebar
         :activeMenu='sidebarMenu'
         :activeMenuOption='activeSidebarMenuOption'
         @setActiveMenuOption='handleSetActiveMenuOption'  />
-
-    <!-- <button @click='showState'>Show state</button> -->
+    </div>
+    <button @click='showState'>Show state</button>
     <Toolbar @click='setSidebarMenu'/>
     <SidebarButton class='sidebarButton' @click="toggleSidebar" />
     <div class='content'>
@@ -104,17 +104,20 @@ export default {
 }
 
 .content {
-
-overflow: scroll;
-width: 98%;
-margin: 5% 2%;
+width: 97vw;
+margin: 5vw 2vw;
 position: relative;
+z-index: 1;
 }
+
+ .sidebarwrapper ~ .content {
+  width: 85vw;
+}
+
 .sidebarButton {
   z-index: 1;
   position: absolute;
 }
-
 
 ul {
   list-style: none;

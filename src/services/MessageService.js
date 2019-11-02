@@ -17,4 +17,17 @@ export default class MessageService {
       }
     });
   }
+
+  static deleteMessage(id) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const deleted = await Api().delete(`/message/${id}`);
+        resolve(deleted);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+
 }

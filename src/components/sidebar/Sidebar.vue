@@ -46,15 +46,15 @@ export default {
 <style>
 /* @media screen and (max-width: 700p) */
 
-ul {
-  width: 100%;
-}
 .sidebar {
+  border: solid 1px white;
   background-color: #34424D ;
-  width: 15%;
   height: 100vh;
   left: 0;
   top:0;
+  padding: 1vw;
+  display: flex;
+  flex-flow: column nowrap;
 }
 .sidebarMenuItems {
 display: flex;

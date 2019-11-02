@@ -45,10 +45,9 @@ export default {
 
 <style>
 .inbox_view{
-  height: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow: hidden;
+  flex-flow: row nowrap;
+  position: relative;
+  z-index: 1;
 }
 </style>

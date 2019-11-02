@@ -19,7 +19,7 @@
       </div>
       <div class='button_wrapper'>
         <button>Reply </button>
-        <button>Delete</button>
+        <button @click='handleDeleteMessage(message.id)'>Delete</button>
       </div>
     </div>
 
@@ -43,7 +43,9 @@ name: 'Message',
     }),
   },
   methods:{
-
+    handleDeleteMessage(messageId) {
+      store.dispatch('removeMessage', messageId)
+    }
   },
 }
 </script>
@@ -51,41 +53,37 @@ name: 'Message',
 <style>
 .message_wrapper {
   background: white;
-  width: 96%;
-  /* margin: */
+  margin-top: 1vw;
+  width: 75vw;
+  height: 75vh;
 }
 .message {
-  margin-top: 2%;
-  /* display: flex;s */
-  /* flex-wrap: nowrap; */
+  margin-top: 2vw;
 }
 .card {
-
   margin: auto;
   width: 75%;
 }
 .card_header {
-
   flex-flow: flex-start;
 }
 .card_header-subject {
   display: inline-block;
   margin: 0;
-  font-size: 3rem;
+  font-size: 3vw;
 }
 .card_header-date {
   margin: auto;
   float: right;
   bottom: 0;
-  display: inline-block;
 }
 .card_header-email {
   margin: 0;
-  font-size: 1.5rem
+  font-size: 1.5vw
 }
 .card_body {
   border-top: solid 1px black;
-  margin-top: 2%;
+  margin-top: 2vw;
 }
 .button_wrapper {
   display: flex;

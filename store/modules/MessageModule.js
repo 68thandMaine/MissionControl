@@ -22,22 +22,27 @@ const messageModule = {
   },
   actions: {
     loadMessages({ commit, state, dispatch }, data) {
-      console.log('!!!!!! LOAD MESSAGES HIT !!!!!!');
       commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 1);
       return MessageService.getMessages(data).then((res) => {
         commit(mutations.SET_MESSAGESARRAY, res);
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 2);
       }).catch((err) => {
-        console.log('loadMessages error: ', err);
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });
     },
-    selectMessage ({commit, state, dispatch}, data) {
-      console.log('!!!!!! SELECT MESSAGE HIT !!!!!!');
-      commit(mutations.SET_MESSAGE_LOAD_STATUS, 2)
-      let message = state.messagesArray.find(message => message.id === data);
-      console.log(message);
-      commit(mutations.SET_MESSAGE, message)
+    selectMessage({commit, state, dispatch}, data) {
+      commit(mutations.SET_MESSAGE_LOAD_STATUS, 2);
+      const message = state.messagesArray.find(message => message.id === data);
+      commit(mutations.SET_MESSAGE, message);
+    },
+    removeMessage({commit, state, dispatch}, id) {
+      return MessageService.deleteMessage(id).then((res) => {
+        console.log('res')
+        const messages = state.messagesArray.filter(message => message.id !== id);
+        commit(mutations.SET_MESSAGESARRAY, messages);
+      }).catch((err) => {
+        commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
+      });
     },
   },
   mutations: {
