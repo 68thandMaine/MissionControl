@@ -1,21 +1,19 @@
 <template>
   <div id="app">
-    <div class='sidebarwrapper' v-if='isOpen'>
-      <Sidebar
+
+      <!-- <Sidebar
         :activeMenu='sidebarMenu'
         :activeMenuOption='activeSidebarMenuOption'
-        @setActiveMenuOption='handleSetActiveMenuOption'  />
-    </div>
-    <!-- <button @click='showState'>Show state</button> -->
-    <Toolbar @click='setSidebarMenu'/>
-    <SidebarButton class='sidebarButton' @click="toggleSidebar" />
-    <div class='content'>
-      <main>
+        @setActiveMenuOption='handleSetActiveMenuOption'  /> -->
+
+
+      <NavBar v-if="isOpen"  @click='setSidebarMenu' />
+      <main v-if='viewApp'>
         <router-view
         :messages='this.handleFilterMessageList'
         :filteredMessages='this.activeSidebarMenuOption' />
       </main>
-    </div>
+
   </div>
 </template>
 
@@ -24,22 +22,21 @@ import { mapState, mapGetters } from 'vuex';
 import store from '../store/store';
 // Components
 import Sidebar from './components/sidebar/Sidebar';
-import SidebarButton from '@/components/navigation/SidebarToggleButton';
-import Toolbar from '@/components/navigation/Toolbar';
+import NavBar from '@/components/navigation/NavBar';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
-    SidebarButton,
-    Toolbar,
+    NavBar
   },
   data() {
     return {
-      isOpen: false,
+      isOpen: true,
       sidebarMenu: '',
       // FOR REMEMBERING ACTIVE CLASS IN SIDEBAR MENU
       activeSidebarMenuOption: '',
+      viewApp: false,
     };
   },
 
@@ -77,51 +74,25 @@ export default {
     handleSetActiveMenuOption(menuOption) {
        (menuOption == undefined) ? null : this.activeSidebarMenuOption = menuOption;
     },
-    setSidebarMenu(menu) {
-      (menu === '') ? this.isOpen = false : this.isOpen = true;
-      this.sidebarMenu = menu;
-    },
-    showState() {
-      console.log('state', this.$store.state)
-      console.log('messages', this.messages.length)
-      console.log('unread messages', this.unreadMessages.length)
-     console.log('replied messages', this.repliedMessages.length)
-     console.log('active sidebar menu', this.activeSidebarMenuOption)
+    setSidebarMenu() {
 
-    }
+      this.isOpen = !this.isOpen;
+      this.viewApp = !this.viewApp;
+      console.log(this.isOpen, this.viewApp)
+    },
   },
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to right, #434343 0%, black 100%);
-  display: flex;
-  height: 100vh;
-}
+@media screen and (min-width: 320px) {
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+  }
 
-.content {
-width: 97vw;
-margin: 5vw 2vw;
-position: relative;
-z-index: 1;
-}
-
- .sidebarwrapper ~ .content {
-  width: 85vw;
-}
-
-.sidebarButton {
-  z-index: 1;
-  position: absolute;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -137,7 +108,6 @@ ul {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   box-sizing: border-box;
-  background: linear-gradient(60deg, #434343 0%, black 100%);
 }
 *, *:before, *:after {
   box-sizing: inherit;

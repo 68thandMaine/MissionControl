@@ -4,7 +4,7 @@ import Router from 'vue-router';
 // VIEWS
 import Dashboard from '../views/Dashboard.vue';
 import Inbox from '../views/Inbox.vue';
-import NotFound from '../components/error_page/NotFound.vue';
+import NotFound from '../views/error_page/NotFound.vue';
 
 
 Vue.use(Router);

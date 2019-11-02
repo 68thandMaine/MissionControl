@@ -4,7 +4,7 @@ import Vue from 'vue';
 // Font awesome install
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faPlusCircle, faCat, faEnvelope, faPortrait, faHome, faTrash
+  faPlusCircle, faCat, faEnvelope, faPortrait, faHome, faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
