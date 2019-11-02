@@ -6,7 +6,7 @@
         :activeMenuOption='activeSidebarMenuOption'
         @setActiveMenuOption='handleSetActiveMenuOption'  />
     </div>
-    <button @click='showState'>Show state</button>
+    <!-- <button @click='showState'>Show state</button> -->
     <Toolbar @click='setSidebarMenu'/>
     <SidebarButton class='sidebarButton' @click="toggleSidebar" />
     <div class='content'>

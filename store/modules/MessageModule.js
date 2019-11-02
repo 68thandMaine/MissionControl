@@ -36,10 +36,10 @@ const messageModule = {
       commit(mutations.SET_MESSAGE, message);
     },
     removeMessage({commit, state, dispatch}, id) {
-      return MessageService.deleteMessage(id).then((res) => {
-        console.log('res')
+      return MessageService.deleteMessage(id).then(() => {
         const messages = state.messagesArray.filter(message => message.id !== id);
         commit(mutations.SET_MESSAGESARRAY, messages);
+        commit(mutations.SET_MESSAGE, null);
       }).catch((err) => {
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });

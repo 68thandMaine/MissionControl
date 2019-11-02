@@ -32,11 +32,6 @@ import store from '../../../store/store';
 
 export default {
 name: 'Message',
-  data(){
-   return {
-
-    }
-  },
   computed: {
     ...mapState({
      message: state => state.message.message,

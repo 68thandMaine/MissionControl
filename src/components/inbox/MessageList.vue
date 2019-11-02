@@ -22,7 +22,7 @@
     </div>
   </div>
   <div v-else data-cy='noMessages'>
-    <h1>HELP</h1>
+    <!-- <h1>Th</h1> -->
   </div>
 </div>
 </template>
