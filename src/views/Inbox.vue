@@ -3,7 +3,7 @@
     <MessageList
     :messages= 'messages'
     :filteredMessages = 'filteredMessages' />
-    <Message />
+    <!-- <Message /> -->
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 
 // Components
 import MessageList from '../components/inbox/MessageList.vue';
-import Message from '../components/inbox/Message.vue';
+// import Message from '../components/inbox/Message.vue';
 
 export default {
   name: 'MessageBox',
@@ -21,16 +21,16 @@ export default {
   },
   components: {
     MessageList,
-    Message,
+    // Message,
   },
 };
 </script>
 
 <style>
-.inbox_view{
-  display: flex;
+.inbox_view {
+  /* display: flex;
   flex-flow: row nowrap;
   position: relative;
-  z-index: 1;
+  z-index: 1; */
 }
 </style>

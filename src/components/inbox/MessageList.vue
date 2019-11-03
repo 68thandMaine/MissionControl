@@ -1,33 +1,49 @@
 <template>
-<div id='messageListWrapper' data-cy='messageList'>
-  <div v-if="messages != '' ">
-    <div id='message'
-        data-cy='messages'
-        v-for="(message, index) in messages"
-        :key='index'
-        :class="{currentMessage:index == currentMessage}"
-        @click='selectMessage(index, message.id)'>
-      <div class='message_details'>
-        <p>{{message.subject}}</p>
-        <p>{{message.createdAt}}</p>
-        <!-- <div class='delete_wrapper'>
-          <font-awesome-icon icon='trash' />
-          <input type='checkbox'/>
-        </div> -->
-      </div>
-      <div class='message_email'>
-        <p>{{message.email}}</p>
-      </div>
-    </div>
-  </div>
-  <div v-else data-cy='noMessages'>
-    <!-- <h1>Th</h1> -->
-  </div>
-</div>
+  <v-card
+    class="mx-auto" >
+    <v-toolbar
+      class='toolbar'
+      color='#3949AB'
+      dark >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title>Inbox</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-checkbox-marked-circle</v-icon>
+      </v-btn>
+    </v-toolbar>
+
+    <v-list two-line class='emailList'>
+      <v-list-item-group
+        multiple
+        active-class="#7986CB"
+      >
+      <template v-for="(message, index) in messages">
+        <v-list-item :key="index">
+          <template v-slot:default="{ active, toggle }">
+            <v-list-item-content>
+              <v-list-item-title
+                v-text="message.firstName + ' ' + message.lastName"></v-list-item-title>
+              <v-list-item-subtitle
+              class="text--primary"
+              v-text="message.subject"></v-list-item-subtitle>
+              <v-list-item-subtitle v-text="message.note"/>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-list-item-action-text v-text="message.createdAt"></v-list-item-action-text>
+            </v-list-item-action>
+            </template>
+        </v-list-item>
+        </template>
+      </v-list-item-group>
+    </v-list>
+  </v-card>
 </template>
 
 <script>
-// import store from '../../../store/store';
 
 export default {
   name: 'MessageList',
@@ -36,49 +52,24 @@ export default {
       type: Array,
       required: true,
     },
-    filteredMessages: String,
-    value: String,
-  },
-  data() {
-    return {
-      currentMessage: null,
-    };
   },
   methods: {
-    // selectMessage(index, id) {
-    //   (this.currentMessage === index) ? this.currentMessage = null : this.currentMessage = index;
-    //   store.dispatch('selectMessage', id);
-    // },
+
   },
 };
 </script>
 
 <style >
-
-#messageListWrapper {
-border: solid 1px red;
-}
-#message {
-
-}
-#message p {
-  margin: 0;
-}
-.message_details {
-  /* width: 100vw; */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.message_email {
-  width: 100vw;
-}
-.currentMessage {
-  border-right: 2px solid goldenrod;
-
-}
-
-.delete_wrapper {
-  z-index: 10;
-}
+  /* .messageListWrapper {
+    overflow: scroll;
+  } */
+  .toolbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+  }
+  .emailList {
+    margin-top: 12vw;
+  }
 </style>
