@@ -15,14 +15,12 @@
         <v-icon>mdi-checkbox-marked-circle</v-icon>
       </v-btn>
     </v-toolbar>
-
     <v-list two-line class='emailList'>
       <v-list-item-group
         multiple
-        active-class="#7986CB"
-      >
+        active-class="#7986CB">
       <template v-for="(message, index) in messages">
-        <v-list-item :key="index">
+        <v-list-item :key="index" @click='viewMessage(message.id)'>
           <template v-slot:default="{ active, toggle }">
             <v-list-item-content>
               <v-list-item-title
@@ -31,12 +29,12 @@
               class="text--primary"
               v-text="message.subject"></v-list-item-subtitle>
               <v-list-item-subtitle v-text="message.note"/>
-            </v-list-item-content>
+              </v-list-item-content>
             <v-list-item-action>
               <v-list-item-action-text v-text="message.createdAt"></v-list-item-action-text>
             </v-list-item-action>
             </template>
-        </v-list-item>
+          </v-list-item>
         </template>
       </v-list-item-group>
     </v-list>
@@ -52,17 +50,17 @@ export default {
       type: Array,
       required: true,
     },
+
   },
   methods: {
-
+    viewMessage(id) {
+      this.$emit('click', id);
+    },
   },
 };
 </script>
 
 <style >
-  /* .messageListWrapper {
-    overflow: scroll;
-  } */
   .toolbar {
     position: fixed;
     width: 100%;
