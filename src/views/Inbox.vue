@@ -2,9 +2,8 @@
   <div class='inbox_view' data-cy='inbox_view'>
     <MessageList
     :messages= 'messages'
-    :filteredMessages = 'filteredMessages'
-    @message='handleViewMessage'/>
-    <Message />
+    :filteredMessages = 'filteredMessages' />
+    <!-- <Message /> -->
   </div>
 </template>
 
@@ -24,22 +23,6 @@ export default {
     MessageList,
     Message,
   },
-  // data() {
-  //   return {
-
-  //   };
-  // },
-  methods: {
-    handleViewMessage(id) {
-      console.log(id);
-    // This method will dispatch a method to the store
-    // to set the state for the message that should be displayed.
-    },
-  },
-  mounted() {
-    console.log('messagebox props', this.$route.params)
-    console.log('message box props messages', this.messages)
-  }
 };
 </script>
 

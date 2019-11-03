@@ -9,36 +9,35 @@
   </router-link>
 
 
-
 </template>
 
 <script>
-  export default {
-    Name: 'Button',
-    props: {
-      buttonShape: String,
-      buttonText: String,
-      cy: String,
-      icon: Boolean,
-      iconName: String,
-      navTo: String,
+export default {
+  Name: 'Button',
+  props: {
+    buttonShape: String,
+    buttonText: String,
+    cy: String,
+    icon: Boolean,
+    iconName: String,
+    navTo: String,
+  },
+  data() {
+    return {
+      buttonStyle: this.buttonShape,
+      iconButton: this.icon,
+      iconType: this.iconName,
+      text: this.buttonText,
+      testingId: this.cy,
+      view: this.navTo,
+    };
+  },
+  methods: {
+    handleClickEvent() {
+      this.$emit('click');
     },
-    data() {
-      return {
-        buttonStyle: this.buttonShape,
-        iconButton: this.icon,
-        iconType: this.iconName,
-        text: this.buttonText,
-        testingId: this.cy,
-        view: this.navTo,
-      }
-    },
-    methods: {
-      handleClickEvent() {
-        this.$emit('click')
-      },
-    }
-  }
+  },
+};
 </script>
 
 <style>

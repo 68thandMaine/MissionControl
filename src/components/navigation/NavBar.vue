@@ -38,34 +38,34 @@
 </template>
 
 <script>
-import Button from '../button/Button';
+import Button from '../button/Button.vue';
 
 export default {
-name: 'NavBar',
-components: {
-  Button,
-},
-methods: {
-  handleClick() {
-    this.$emit('click');
+  name: 'NavBar',
+  components: {
+    Button,
   },
-  viewHome() {
-    this.$router.push ({ path: '/'});
-    this.$emit('click');
-  },
-  viewElenor() {
+  methods: {
+    handleClick() {
+      this.$emit('click');
+    },
+    viewHome() {
+      this.$router.push({ path: '/' });
+      this.$emit('click');
+    },
+    viewElenor() {
     // this.$router.push({ path:'/inbox' });
-    this.$emit('click');
-  },
-  viewProfile() {
+      this.$emit('click');
+    },
+    viewProfile() {
     // this.$router.push({ path:'/inbox' });
-    this.$emit('click');
-  },
-  viewNewContent() {
+      this.$emit('click');
+    },
+    viewNewContent() {
     // this.$router.push({ path:'/inbox' });
-    this.$emit('click');
+      this.$emit('click');
+    },
   },
-}
 };
 </script>
 

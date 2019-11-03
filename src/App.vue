@@ -1,10 +1,11 @@
 <template>
   <div id="app">
 
-      <!-- <Sidebar
+      <Sidebar
+        v-if="viewApp"
         :activeMenu='sidebarMenu'
         :activeMenuOption='activeSidebarMenuOption'
-        @setActiveMenuOption='handleSetActiveMenuOption'  /> -->
+        @setActiveMenuOption='handleSetActiveMenuOption'  />
 
 
       <NavBar v-if="isOpen"  @click='setSidebarMenu' />
@@ -21,14 +22,14 @@
 import { mapState, mapGetters } from 'vuex';
 import store from '../store/store';
 // Components
-import Sidebar from './components/sidebar/Sidebar';
-import NavBar from '@/components/navigation/NavBar';
+import Sidebar from './components/sidebar/Sidebar.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
-    NavBar
+    NavBar,
   },
   data() {
     return {
@@ -40,31 +41,29 @@ export default {
     };
   },
 
- created() {
-   store.dispatch('loadMessages');
- },
+  created() {
+    store.dispatch('loadMessages');
+  },
   computed: {
     ...mapState({
       messages: state => state.message.messagesArray,
     }),
     ...mapGetters({
       unreadMessages: 'getUnreadMessages',
-      repliedMessages: 'getRepliedMessages'
+      repliedMessages: 'getRepliedMessages',
     }),
-    handleFilterMessageList(){
-      if(this.activeSidebarMenuOption == '') {
+    handleFilterMessageList() {
+      if (this.activeSidebarMenuOption === '') {
         return this.messages;
-      }
-      if(this.activeSidebarMenuOption == 'all') {
+      } if (this.activeSidebarMenuOption === 'all') {
         return this.messages;
-      }
-      if(this.activeSidebarMenuOption == 'unread') {
+      } if (this.activeSidebarMenuOption === 'unread') {
         return this.unreadMessages;
-      }
-      if(this.activeSidebarMenuOption == 'replied') {
+      } if (this.activeSidebarMenuOption === 'replied') {
         return this.repliedMessages;
       }
-    }
+      return this.messages;
+    },
   },
   methods: {
     toggleSidebar(menuOption) {
@@ -72,16 +71,15 @@ export default {
       (menuOption == undefined) ? null : this.activeSidebarMenuOption = menuOption;
     },
     handleSetActiveMenuOption(menuOption) {
-       (menuOption == undefined) ? null : this.activeSidebarMenuOption = menuOption;
+      (menuOption == undefined) ? null : this.activeSidebarMenuOption = menuOption;
     },
     setSidebarMenu() {
-
       this.isOpen = !this.isOpen;
       this.viewApp = !this.viewApp;
-      console.log(this.isOpen, this.viewApp)
+      console.log(this.isOpen, this.viewApp);
     },
   },
-}
+};
 </script>
 
 <style>

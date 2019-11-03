@@ -1,21 +1,23 @@
 <template>
-	<header class='sidebar' data-cy='sidebar'>
-    <nav class='sidebarNavigation'>
-      <div class='sidebarMenuItems' data-cy='sidebarMenu'>
-        <component @click='handelToggleSidebar' :menuToShow='this.sidebarActiveMenuOption' :is='this.sidebarMenu' />
-      </div>
-    </nav>
-	</header>
+<header class='sidebar' data-cy='sidebar'>
+  <nav class='sidebarNavigation'>
+    <div class='sidebarMenuItems' data-cy='sidebarMenu'>
+      <component @click='handelToggleSidebar'
+        :menuToShow='this.sidebarActiveMenuOption'
+        :is='this.sidebarMenu' />
+    </div>
+  </nav>
+</header>
 </template>
 
 <script>
-import InboxMenu from './menu/InboxMenu';
+import InboxMenu from './menu/InboxMenu.vue';
 
 export default {
   name: 'Sidebar',
   props: {
     activeMenu: String,
-    activeMenuOption: String
+    activeMenuOption: String,
   },
   components: {
     InboxMenu,
@@ -23,23 +25,23 @@ export default {
   data() {
     return {
       // activeMenuOption: ''
-    }
+    };
   },
   computed: {
     sidebarMenu() {
-      return this.activeMenu
+      return this.activeMenu;
     },
     sidebarActiveMenuOption() {
-      return this.activeMenuOption
+      return this.activeMenuOption;
     },
   },
   methods: {
     handelToggleSidebar(activeMenuOption) {
-      console.log(activeMenuOption)
-      this.$emit('setActiveMenuOption', activeMenuOption)
+      console.log(activeMenuOption);
+      this.$emit('setActiveMenuOption', activeMenuOption);
       // this.activeMenuOption = activeMenu;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -48,10 +50,7 @@ export default {
 
 .sidebar {
   border: solid 1px white;
-  background-color: #34424D ;
-  height: 100vh;
-  left: 0;
-  top:0;
+  /* height: 100vh; */
   padding: 1vw;
   display: flex;
   flex-flow: column nowrap;
