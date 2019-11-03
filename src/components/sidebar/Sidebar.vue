@@ -1,15 +1,17 @@
 <template>
-	<header class='sidebar' data-cy='sidebar'>
-    <nav class='sidebarNavigation'>
-      <div class='sidebarMenuItems' data-cy='sidebarMenu'>
-        <component @click='handelToggleSidebar' :menuToShow='this.sidebarActiveMenuOption' :is='this.sidebarMenu' />
-      </div>
-    </nav>
-	</header>
+<header class='sidebar' data-cy='sidebar'>
+  <nav class='sidebarNavigation'>
+    <div class='sidebarMenuItems' data-cy='sidebarMenu'>
+      <component @click='handelToggleSidebar'
+        :menuToShow='this.sidebarActiveMenuOption'
+        :is='this.sidebarMenu' />
+    </div>
+  </nav>
+</header>
 </template>
 
 <script>
-import InboxMenu from './menu/InboxMenu';
+import InboxMenu from './menu/InboxMenu.vue';
 
 export default {
   name: 'Sidebar',
@@ -48,10 +50,7 @@ export default {
 
 .sidebar {
   border: solid 1px white;
-  background-color: #34424D ;
-  height: 100vh;
-  left: 0;
-  top:0;
+  /* height: 100vh; */
   padding: 1vw;
   display: flex;
   flex-flow: column nowrap;

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import MessageService from '../../src/services/MessageService';
 import * as mutations from '../mutations/mutation-types';
 
@@ -21,26 +22,26 @@ const messageModule = {
     messageLoadStatus: 0,
   },
   actions: {
-    loadMessages({ commit, state, dispatch }, data) {
+    loadMessages({ commit }, data) {
       commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 1);
       return MessageService.getMessages(data).then((res) => {
         commit(mutations.SET_MESSAGESARRAY, res);
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 2);
-      }).catch((err) => {
+      }).catch(() => {
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });
     },
-    selectMessage({commit, state, dispatch}, data) {
+    selectMessage({ commit, state }, data) {
       commit(mutations.SET_MESSAGE_LOAD_STATUS, 2);
-      const message = state.messagesArray.find(message => message.id === data);
+      const message = state.messagesArray.find(msg => msg.id === data);
       commit(mutations.SET_MESSAGE, message);
     },
-    removeMessage({commit, state, dispatch}, id) {
+    removeMessage({ commit, state }, id) {
       return MessageService.deleteMessage(id).then(() => {
         const messages = state.messagesArray.filter(message => message.id !== id);
         commit(mutations.SET_MESSAGESARRAY, messages);
         commit(mutations.SET_MESSAGE, null);
-      }).catch((err) => {
+      }).catch(() => {
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });
     },
@@ -61,11 +62,11 @@ const messageModule = {
   },
   getters: {
     getUnreadMessages: (state) => {
-      return state.messagesArray.filter(message => message.opened === false);
+      state.messagesArray.filter(message => message.opened === false);
     },
     getRepliedMessages: (state) => {
-      return state.messagesArray.filter(message => message.replied === true);
-    }
+      state.messagesArray.filter(message => message.replied === true);
+    },
   },
 };
 

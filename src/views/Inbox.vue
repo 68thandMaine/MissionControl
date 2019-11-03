@@ -2,8 +2,7 @@
   <div class='inbox_view' data-cy='inbox_view'>
     <MessageList
     :messages= 'messages'
-    :filteredMessages = 'filteredMessages'
-    @message='handleViewMessage'/>
+    :filteredMessages = 'filteredMessages' />
     <Message />
   </div>
 </template>
@@ -11,8 +10,8 @@
 <script>
 
 // Components
-import MessageList from '../components/inbox/MessageList';
-import Message from '../components/inbox/Message';
+import MessageList from '../components/inbox/MessageList.vue';
+import Message from '../components/inbox/Message.vue';
 
 export default {
   name: 'MessageBox',
@@ -23,22 +22,6 @@ export default {
   components: {
     MessageList,
     Message,
-  },
-  // data() {
-  //   return {
-
-  //   };
-  // },
-  methods: {
-    handleViewMessage(id) {
-      console.log(id);
-    // This method will dispatch a method to the store
-    // to set the state for the message that should be displayed.
-    },
-  },
-  mounted() {
-    console.log('messagebox props', this.$route.params);
-    console.log('message box props messages', this.messages);
   },
 };
 </script>

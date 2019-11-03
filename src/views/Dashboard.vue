@@ -1,18 +1,15 @@
 <template>
-  <div id='dashboard_wrapper'>
-    <h1>It's me im the dashboard</h1>
-
-  </div>
+  <NavBar />
 </template>
 
 <script>
 // @ is an alias to /src
-
+import NavBar from '../components/navigation/NavBar.vue';
 
 export default {
   name: 'Dashboard',
   components: {
-
+    NavBar,
   },
   methods: {
     openSidebar() {
