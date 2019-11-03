@@ -68,6 +68,6 @@ export default {
     z-index: 10;
   }
   .emailList {
-    margin-top: 12vw;
+    margin-top: 6vh;
   }
 </style>
