@@ -3,8 +3,8 @@ import Router from 'vue-router';
 
 // VIEWS
 import Dashboard from '../views/Dashboard.vue';
-import MessageBox from '../views/MessageBox.vue';
-import NotFound from '../components/error_page/NotFound.vue';
+import Inbox from '../views/Inbox.vue';
+import NotFound from '../views/error_page/NotFound.vue';
 
 
 Vue.use(Router);
@@ -29,18 +29,20 @@ const router = new Router({
       // route level code-splitting
       // this generates a separate chunk (callback.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "callback" */ '../views/Callback.vue'),
+      // component: () => import(/* webpackChunkName: "callback" */ '../views/Callback.vue'),
     },
     {
-      path: '/newProfile',
-      name: 'newProfile',
-      component: () => import('../views/forms/ProfileForm.vue'),
+      path: '/profile',
+      name: 'profile',
+      // component: () => import('../views/forms/ProfileForm.vue'),
     },
     {
       path: '/inbox',
-      name: 'messageBox',
-      component: MessageBox,
+      name: 'inbox',
+      component: Inbox,
+      props: true,
     },
+
   ],
 });
 
