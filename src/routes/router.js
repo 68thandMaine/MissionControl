@@ -29,12 +29,12 @@ const router = new Router({
       // route level code-splitting
       // this generates a separate chunk (callback.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "callback" */ '../views/Callback.vue'),
+      // component: () => import(/* webpackChunkName: "callback" */ '../views/Callback.vue'),
     },
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/forms/ProfileForm.vue'),
+      // component: () => import('../views/forms/ProfileForm.vue'),
     },
     {
       path: '/inbox',

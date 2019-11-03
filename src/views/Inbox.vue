@@ -3,15 +3,15 @@
     <MessageList
     :messages= 'messages'
     :filteredMessages = 'filteredMessages' />
-    <!-- <Message /> -->
+    <Message />
   </div>
 </template>
 
 <script>
 
 // Components
-import MessageList from '../components/inbox/MessageList';
-import Message from '../components/inbox/Message';
+import MessageList from '../components/inbox/MessageList.vue';
+import Message from '../components/inbox/Message.vue';
 
 export default {
   name: 'MessageBox',

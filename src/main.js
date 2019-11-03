@@ -13,6 +13,7 @@ import router from './routes/router';
 import store from '../store/store';
 import auth from './auth';
 import './registerServiceWorker';
+import vuetify from './plugins/vuetify';
 
 library.add(faPlusCircle, faCat, faEnvelope, faPortrait, faHome, faTrash);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -24,5 +25,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App),
 }).$mount('#app');

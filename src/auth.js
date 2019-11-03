@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-useless-concat */
 import auth0 from 'auth0-js';
 import Vue from 'vue';
 
@@ -9,7 +12,7 @@ const webAuth = new auth0.WebAuth({
   redirectUri: 'http://localhost:8080/callback',
   // we will use the api/v2/ to access the user information as payload
   audience: 'https://' + `${process.env.VUE_APP_AUTH0_DOMAIN}` + '/api/v2/',
-  responseType: 'token id_token',
+  responseType: 'token idToken',
   scope: 'openid profile', // define the scopes you want to use
 });
 
@@ -17,10 +20,10 @@ const auth = new Vue({
   computed: {
     token: {
       get() {
-        return localStorage.getItem('id_token');
+        return localStorage.getItem('idToken');
       },
-      set(id_token) {
-        localStorage.setItem('id_token', id_token);
+      set(idToken) {
+        localStorage.setItem('idToken', idToken);
       },
     },
     accessToken: {
@@ -54,9 +57,9 @@ const auth = new Vue({
       webAuth.authorize();
     },
     logout() {
-      return new Promise((resolve, reject) => {
+      return new Promise(() => {
         localStorage.removeItem('access_token');
-        localStorage.removeItem('id_token');
+        localStorage.removeItem('idToken');
         localStorage.removeItem('expires_at');
         localStorage.removeItem('user');
         webAuth.logout({

@@ -1,37 +1,41 @@
 <template>
     <nav class='moblieNavBar'>
-
       <div class='row'>
-           <Button
-        navTo = 'inbox'
-        :icon="true"
-        iconName='envelope'
-        @click='handleClick'
+        <Button
+          buttonShape='circle'
+          navTo = 'inbox'
+          :icon="true"
+          iconName='envelope'
+          @click='viewInbox'
          />
-          <Button
-        navTo = ''
-        :icon="true"
-        iconName='plus-circle'
+        <Button
+          buttonShape='circle'
+          navTo = ''
+          :icon="true"
+          iconName='plus-circle'
          />
       </div>
       <div class='row'>
-          <Button
-        navTo = '/'
-        :icon="true"
-        iconName='home'
-        @click='handleClick'
+        <Button
+          buttonShape='circle'
+          navTo = '/'
+          :icon="true"
+          iconName='home'
+          @click='handleClick'
          />
       </div>
       <div class='row'>
-             <Button
-        navTo = 'elenor'
-        :icon="true"
-        iconName='cat'
+        <Button
+          buttonShape='circle'
+          navTo = 'elenor'
+          :icon="true"
+          iconName='cat'
          />
-           <Button
-        navTo = 'profile'
-        :icon="true"
-        iconName='portrait'
+        <Button
+          buttonShape='circle'
+          navTo = 'profile'
+          :icon="true"
+          iconName='portrait'
          />
       </div>
       </nav>
@@ -52,6 +56,9 @@ export default {
     viewHome() {
       this.$router.push({ path: '/' });
       this.$emit('click');
+    },
+    viewInbox() {
+      this.$router.push({ path: '/inbox' });
     },
     viewElenor() {
     // this.$router.push({ path:'/inbox' });
