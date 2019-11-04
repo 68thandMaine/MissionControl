@@ -4,6 +4,15 @@ ___
 
 ## Color Themes
 
+### On the Email List
+
+| Target | Color | Color-Code |
+|---|---|---|
+| Inbox toolbar title | indigo darken-1 | #3949AB |
+| Inbox active class | indigo lighten-2 | #7986CB |
+
+### On the Message
+
 | Target | Color | Color-Code |
 |---|---|---|
 | Inbox toolbar title | indigo darken-1 | #3949AB |
