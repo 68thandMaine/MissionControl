@@ -8,8 +8,15 @@
       <p>This message was sent from {{message.firstName}} {{message.lastName}}</p>
     </v-card-text>
     <v-card-actions class='emailOptions'>
-      <Button>Reply </Button>
-      <button @click='handleDeleteMessage(message.id)'>Delete</button>
+      <Button
+      buttonShape='mail'
+      buttonText='Reply'
+      cy='replyToMessage'/>
+      <Button
+      buttonShape='mail'
+      buttonText='Delete'
+      cy='deleteMessage'
+      @click='handleDeleteMessage(message.id)' />
     </v-card-actions>
   </v-card>
 </template>
@@ -40,12 +47,16 @@ export default {
 
 <style>
 .email {
-  border: solid 1px red !important;
-  height: 100vh;
+  height: 90vh;
+  padding-top: 2vw;
 }
 .emailOptions {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
+.but {
+  border: solid 1px red;
+}
+
 </style>

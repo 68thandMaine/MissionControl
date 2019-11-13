@@ -3,7 +3,7 @@
     <v-content>
       <router-view
         :messages = "this.handleFilterMessageList"
-        :filteredMessages = 'this.activeSideBarMenuOption' />
+        :filteredMessages = 'this.activeSidebarMenuOption' />
     </v-content>
   </v-app>
 </template>

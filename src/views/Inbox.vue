@@ -1,11 +1,12 @@
 <template>
   <div class='inbox_view' data-cy='inbox_view'>
     <MessageList
-    v-if='!selectedMessage'
     :messages= 'messages'
     :filteredMessages = 'filteredMessages'
     @click='handleViewMessage' />
-    <Message v-if='selectedMessage' />
+    <v-dialog v-model='dialog' >
+      <Message v-if='selectedMessage' />
+    </v-dialog>
   </div>
 </template>
 
@@ -22,6 +23,11 @@ export default {
     messages: Array,
     filteredMessages: String,
   },
+  data() {
+    return {
+      dialog: false,
+    };
+  },
   computed: {
     ...mapState({
       selectedMessage: state => state.message.message,
@@ -33,17 +39,9 @@ export default {
   },
   methods: {
     handleViewMessage(id) {
+      this.dialog = true;
       store.dispatch('selectMessage', id);
     },
   },
 };
 </script>
-
-<style>
-.inbox_view {
-  /* display: flex;
-  flex-flow: row nowrap;
-  position: relative;
-  z-index: 1; */
-}
-</style>

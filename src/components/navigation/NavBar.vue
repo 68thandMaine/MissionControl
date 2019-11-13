@@ -3,14 +3,14 @@
       <div class='row'>
         <Button
           buttonShape='circle'
-          navTo = 'inbox'
+          buttonText = 'inbox'
           :icon="true"
           iconName='envelope'
           @click='viewInbox'
          />
         <Button
           buttonShape='circle'
-          navTo = ''
+          buttonText = ''
           :icon="true"
           iconName='plus-circle'
          />
@@ -18,7 +18,7 @@
       <div class='row'>
         <Button
           buttonShape='circle'
-          navTo = '/'
+          buttonText = '/'
           :icon="true"
           iconName='home'
           @click='handleClick'
@@ -27,13 +27,13 @@
       <div class='row'>
         <Button
           buttonShape='circle'
-          navTo = 'elenor'
+          buttonText = 'elenor'
           :icon="true"
           iconName='cat'
          />
         <Button
           buttonShape='circle'
-          navTo = 'profile'
+          buttonText = 'profile'
           :icon="true"
           iconName='portrait'
          />
