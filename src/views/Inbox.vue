@@ -4,9 +4,10 @@
     :messages= 'messages'
     :filteredMessages = 'filteredMessages'
     @click='handleViewMessage' />
-    <v-dialog v-model='dialog' >
+
+    <Modal :openModal='modalOpen' >
       <Message v-if='selectedMessage' />
-    </v-dialog>
+    </Modal>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import store from '../../store/store';
 // Components
 import MessageList from '../components/inbox/MessageList.vue';
 import Message from '../components/inbox/Message.vue';
+import Modal from '../components/modal/Modal.vue';
 
 export default {
   name: 'MessageBox',
@@ -25,7 +27,7 @@ export default {
   },
   data() {
     return {
-      dialog: false,
+      modalOpen: false,
     };
   },
   computed: {
@@ -36,10 +38,11 @@ export default {
   components: {
     MessageList,
     Message,
+    Modal,
   },
   methods: {
     handleViewMessage(id) {
-      this.dialog = true;
+      this.modalOpen = true;
       store.dispatch('selectMessage', id);
     },
   },

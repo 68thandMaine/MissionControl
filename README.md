@@ -56,4 +56,3 @@ ___
 - Vue.js
 - Cypress.js
 - Vuex
-
