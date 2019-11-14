@@ -31,15 +31,15 @@ export default {
   name: 'Message',
   props: {
     handleDeleteMessage: Function,
+    message: Object,
   },
   components: {
     Button,
   },
-  computed: {
-    ...mapState({
-      message: state => state.message.message,
-    }),
+  created() {
+    console.log('message created')
   },
+
   methods: {
     deleteMessage(messageId) {
       this.handleDeleteMessage(messageId)

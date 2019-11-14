@@ -6,9 +6,10 @@
     @click='handleViewMessage'
      />
 
-    <Modal :openModal='modalOpen' >
+    <Modal :visible='showModal' @close='showModal=false'>
       <Message
         v-if='selectedMessage'
+        :message='selectedMessage'
         :handleDeleteMessage = 'handleDeleteMessage' />
     </Modal>
   </div>
@@ -27,10 +28,10 @@ export default {
   props: {
     messages: Array,
     filteredMessages: String,
-  },
+    },
   data() {
     return {
-      modalOpen: false,
+      showModal: false,
     };
   },
   computed: {
@@ -45,11 +46,10 @@ export default {
   },
   methods: {
     handleViewMessage(id) {
-      this.modalOpen = true;
       store.dispatch('selectMessage', id);
+      this.showModal=true;
     },
     handleDeleteMessage(id) {
-      this.modalOpen = false;
       store.dispatch('removeMessage', id);
     }
   },
