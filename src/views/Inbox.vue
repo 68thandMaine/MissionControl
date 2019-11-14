@@ -3,10 +3,13 @@
     <MessageList
     :messages= 'messages'
     :filteredMessages = 'filteredMessages'
-    @click='handleViewMessage' />
+    @click='handleViewMessage'
+     />
 
     <Modal :openModal='modalOpen' >
-      <Message v-if='selectedMessage' />
+      <Message
+        v-if='selectedMessage'
+        :handleDeleteMessage = 'handleDeleteMessage' />
     </Modal>
   </div>
 </template>
@@ -45,6 +48,10 @@ export default {
       this.modalOpen = true;
       store.dispatch('selectMessage', id);
     },
+    handleDeleteMessage(id) {
+      this.modalOpen = false;
+      store.dispatch('removeMessage', id);
+    }
   },
 };
 </script>

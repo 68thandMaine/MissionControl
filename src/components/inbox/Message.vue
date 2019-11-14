@@ -16,7 +16,7 @@
       buttonShape='mail'
       buttonText='Delete'
       cy='deleteMessage'
-      @click='handleDeleteMessage(message.id)' />
+      @click='deleteMessage(message.id)' />
     </v-card-actions>
   </v-card>
 </template>
@@ -29,6 +29,9 @@ import Button from '../button/Button.vue';
 
 export default {
   name: 'Message',
+  props: {
+    handleDeleteMessage: Function,
+  },
   components: {
     Button,
   },
@@ -38,8 +41,8 @@ export default {
     }),
   },
   methods: {
-    handleDeleteMessage(messageId) {
-      store.dispatch('removeMessage', messageId);
+    deleteMessage(messageId) {
+      this.handleDeleteMessage(messageId)
     },
   },
 };
