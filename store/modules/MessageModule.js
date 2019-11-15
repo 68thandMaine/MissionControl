@@ -31,10 +31,19 @@ const messageModule = {
         commit(mutations.SET_MESSAGESARRAY_LOAD_STATUS, 3);
       });
     },
+    sendMessage({ commit, state }, data) {
+       return MessageService.sendMessage(data).then((res)=> {
+        console.log('sendMessage', res);
+
+      });
+    },
     selectMessage({ commit, state }, data) {
       commit(mutations.SET_MESSAGE_LOAD_STATUS, 2);
       const message = state.messagesArray.find(msg => msg.id === data);
       commit(mutations.SET_MESSAGE, message);
+    },
+    deselectMessage({ commit }) {
+      commit(mutations.SET_MESSAGE, null);
     },
     removeMessage({ commit, state }, id) {
       return MessageService.deleteMessage(id).then(() => {

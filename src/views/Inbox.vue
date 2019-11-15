@@ -1,5 +1,7 @@
 <template>
   <div class='inbox_view' data-cy='inbox_view'>
+    <Toolbar />
+
     <MessageList
     :messages= 'messages'
     :filteredMessages = 'filteredMessages'
@@ -10,7 +12,8 @@
       <Message
         v-if='selectedMessage'
         :message='selectedMessage'
-        :handleDeleteMessage = 'handleDeleteMessage' />
+        :handleDeleteMessage = 'handleDeleteMessage'
+        :handleSendMessage = 'handleSendMessage' />
     </Modal>
   </div>
 </template>
@@ -22,6 +25,7 @@ import store from '../../store/store';
 import MessageList from '../components/inbox/MessageList.vue';
 import Message from '../components/inbox/Message.vue';
 import Modal from '../components/modal/Modal.vue';
+import Toolbar from '../components/inbox/ToolBar';
 
 export default {
   name: 'MessageBox',
@@ -43,6 +47,7 @@ export default {
     MessageList,
     Message,
     Modal,
+    Toolbar
   },
   methods: {
     handleViewMessage(id) {
@@ -51,7 +56,19 @@ export default {
     },
     handleDeleteMessage(id) {
       store.dispatch('removeMessage', id);
+    },
+    handleSendMessage(message) {
+      store.dispatch('sendMessage', message);
+      this.showModal=false;
     }
   },
 };
 </script>
+
+<style scoped>
+.inbox_view {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+</style>

@@ -96,6 +96,7 @@ body {
  */
 main {
   display: block;
+  background: lightslategrey !important;
 }
 /**
  * Correct the font size and margin on `h1` elements within `section` and

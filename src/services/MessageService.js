@@ -23,4 +23,16 @@ export default class MessageService {
       }
     });
   }
+
+  static sendMessage(message) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.log(message)
+        const sent = await Api().put(`/message/${message.id}`);
+        // Need to make a web service file next.
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
 }

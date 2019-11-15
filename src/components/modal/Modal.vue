@@ -1,8 +1,8 @@
 <template>
   <v-dialog  v-model='show' >
-    <div @click.stop='show=false'>
+    <!-- <div @click.stop='show=false'> -->
       <slot />
-    </div>
+    <!-- </div> -->
   </v-dialog>
 </template>
 

@@ -1,20 +1,6 @@
 <template>
   <v-card
     class="mx-auto" >
-    <v-toolbar
-      class='toolbar'
-      color='#3949AB'
-      dark >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-toolbar-title>Inbox</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-checkbox-marked-circle</v-icon>
-      </v-btn>
-    </v-toolbar>
     <v-list two-line class='emailList'>
       <v-list-item-group
         multiple
